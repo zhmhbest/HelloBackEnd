@@ -3,8 +3,6 @@
 
 # [Spring](../index.html)
 
-[TOC]
-
 ## [Framework](./framework/index.html)
 
 ## [SpringWeb](./web/index.html)
