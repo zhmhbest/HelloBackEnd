@@ -1,0 +1,645 @@
+<!DOCTYPE html><html><head>
+      <title>index</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <link rel="stylesheet" href="https://zhmhbest.gitee.io/hellomathematics/style/index.css">
+<script src="https://zhmhbest.gitee.io/hellomathematics/style/index.js"></script>
+<h1 class="mume-header" id="djangoindexhtml"><a href="../index.html">Django</a></h1>
+
+<ul>
+<li><a href="#djangoindexhtml">Django</a>
+<ul>
+<li><a href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5">&#x76F8;&#x5173;&#x6982;&#x5FF5;</a>
+<ul>
+<li><a href="#mvt">MVT</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%8F%8A%E8%BF%90%E8%A1%8C">&#x521B;&#x5EFA;&#x53CA;&#x8FD0;&#x884C;</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">&#x521B;&#x5EFA;&#x9879;&#x76EE;</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8">&#x521B;&#x5EFA;&#x5E94;&#x7528;</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">&#x9879;&#x76EE;&#x7ED3;&#x6784;</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1">&#x542F;&#x52A8;&#x670D;&#x52A1;</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE">&#x9879;&#x76EE;&#x914D;&#x7F6E;</a>
+<ul>
+<li><a href="#%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8">&#x6CE8;&#x518C;&#x5E94;&#x7528;</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE">&#x8DEF;&#x7531;&#x914D;&#x7F6E;</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86">&#x53EF;&#x89C6;&#x5316;&#x540E;&#x53F0;&#x7BA1;&#x7406;</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E8%B6%85%E7%BA%A7%E7%AE%A1%E7%90%86%E5%91%98">&#x521B;&#x5EFA;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;</a></li>
+</ul>
+</li>
+<li><a href="#module">Module</a>
+<ul>
+<li><a href="#mysql%E6%94%AF%E6%8C%81">mysql&#x652F;&#x6301;</a></li>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B">&#x8BBE;&#x8BA1;&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;</a></li>
+<li><a href="#%E8%BF%81%E7%A7%BB%E6%96%87%E4%BB%B6">&#x8FC1;&#x79FB;&#x6587;&#x4EF6;</a>
+<ul>
+<li><a href="#%E7%94%9F%E6%88%90%E8%BF%81%E7%A7%BB%E6%96%87%E4%BB%B6">&#x751F;&#x6210;&#x8FC1;&#x79FB;&#x6587;&#x4EF6;</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E8%BF%81%E7%A7%BB%E6%96%87%E4%BB%B6">&#x6267;&#x884C;&#x8FC1;&#x79FB;&#x6587;&#x4EF6;</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B3%A8%E5%86%8C%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2">&#x6CE8;&#x518C;&#x6A21;&#x578B;&#x5230;&#x540E;&#x53F0;&#x7BA1;&#x7406;&#x754C;&#x9762;</a></li>
+</ul>
+</li>
+<li><a href="#view">View</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5">&#x76F8;&#x5173;&#x6982;&#x5FF5;</h2>
+
+<h3 class="mume-header" id="mvt">MVT</h3>
+
+<ul>
+<li>M: &#x6A21;&#x578B;&#xFF0C;&#x5BF9;&#x5E94;MVC&#x7684;M&#xFF0C;&#x7528;&#x4E8E;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x4EA4;&#x4E92;&#x3002;</li>
+<li>V: &#x89C6;&#x56FE;&#xFF0C;&#x5BF9;&#x5E94;MVC&#x7684;C&#xFF0C;&#x7528;&#x4E8E;&#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x3002;</li>
+<li>T: &#x6A21;&#x677F;&#xFF0C;&#x5BF9;&#x5E94;MVC&#x7684;V&#xFF0C;&#x7528;&#x4E8E;&#x51B3;&#x5B9A;&#x6700;&#x7EC8;&#x663E;&#x793A;&#x6837;&#x5F0F;&#x3002;</li>
+</ul>
+<h2 class="mume-header" id="%E5%88%9B%E5%BB%BA%E5%8F%8A%E8%BF%90%E8%A1%8C">&#x521B;&#x5EFA;&#x53CA;&#x8FD0;&#x884C;</h2>
+
+<h3 class="mume-header" id="%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">&#x521B;&#x5EFA;&#x9879;&#x76EE;</h3>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token comment"># &#x5B89;&#x88C5;Django</span>
+pip <span class="token function">install</span> Django
+
+<span class="token comment"># &#x521B;&#x5EFA;&#x9879;&#x76EE;</span>
+django-admin startproject <span class="token operator">&lt;</span>&#x9879;&#x76EE;&#x540D;<span class="token operator">&gt;</span>
+</pre><h3 class="mume-header" id="%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8">&#x521B;&#x5EFA;&#x5E94;&#x7528;</h3>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token comment"># &#x521B;&#x5EFA;&#x5E94;&#x7528;</span>
+python manage.py startapp <span class="token operator">&lt;</span>&#x5E94;&#x7528;&#x540D;<span class="token operator">&gt;</span>
+</pre><h3 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">&#x9879;&#x76EE;&#x7ED3;&#x6784;</h3>
+
+<pre data-role="codeBlock" data-info="txt" class="language-txt">Projects
+&#x2502;  db.sqlite3                       &#x6570;&#x636E;&#x5E93;&#x6587;&#x4EF6;
+&#x2502;  manage.py                        &#x7BA1;&#x7406;Django&#x7AD9;&#x70B9;
+&#x2502;
+&#x251C;&#x2500;Project                           &lt;&#x9879;&#x76EE;&#x540D;&gt;
+&#x2502;      asgi.py
+&#x2502;      settings.py                  &#x9879;&#x76EE;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+&#x2502;      urls.py                      URL&#x8DEF;&#x7531;&#x914D;&#x7F6E;
+&#x2502;      wsgi.py                      WSGI&#x5E94;&#x7528;&#x914D;&#x7F6E;
+&#x2502;      __init__.py
+&#x2502;
+&#x251C;&#x2500;main                              &lt;&#x5E94;&#x7528;&#x540D;&gt;
+&#x2502;  &#x2502;  admin.py                      &#x7F51;&#x7AD9;&#x540E;&#x53F0;&#x7BA1;&#x7406;
+&#x2502;  &#x2502;  apps.py
+&#x2502;  &#x2502;  models.py                     &#x6570;&#x636E;&#x5E93;&#x8BBE;&#x8BA1;
+&#x2502;  &#x2502;  views.py                      &#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#x3001;&#x8FD4;&#x56DE;&#x5E94;&#x7B54;
+&#x2502;  &#x2502;  tests.py                      &#x6D4B;&#x8BD5;&#x4EE3;&#x7801;
+&#x2502;  &#x2502;  __init__.py
+&#x2502;  &#x2502;
+&#x2502;  &#x2514;&#x2500;migrations                     &#x8FC1;&#x79FB;&#x6587;&#x4EF6;&#x76EE;&#x5F55;
+&#x2502;          __init__.py
+&#x2502;
+&#x2514;&#x2500;templates
+</pre><h3 class="mume-header" id="%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1">&#x542F;&#x52A8;&#x670D;&#x52A1;</h3>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token comment"># &#x542F;&#x52A8;&#x670D;&#x52A1;</span>
+python manage.py runserver <span class="token punctuation">[</span>ip:port<span class="token punctuation">]</span>
+</pre><h2 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE">&#x9879;&#x76EE;&#x914D;&#x7F6E;</h2>
+
+<h3 class="mume-header" id="%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8">&#x6CE8;&#x518C;&#x5E94;&#x7528;</h3>
+
+<p><code>&lt;project&gt;/setting.py</code></p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># &#x6CE8;&#x518C;&#x5E94;&#x7528;</span>
+INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">&apos;main.apps.MainConfig&apos;</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment"># &#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;</span>
+DATABASES <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">&apos;default&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment"># &#x3010;sqlite&#x3011;</span>
+        <span class="token comment"># &apos;ENGINE&apos;: &apos;django.db.backends.sqlite3&apos;,</span>
+        <span class="token comment"># &apos;NAME&apos;: os.path.join(BASE_DIR, &apos;db.sqlite3&apos;),</span>
+
+        <span class="token comment"># &#x3010;mysql&#x3011;</span>
+        <span class="token comment"># pip install pymysql</span>
+        <span class="token string">&apos;ENGINE&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;django.db.backends.mysql&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;NAME&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;${&#x6570;&#x636E;&#x5E93;&#x540D;}&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;USER&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;${&#x6570;&#x636E;&#x5E93;&#x767B;&#x5F55;&#x7528;&#x6237;&#x540D;}&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;PASSWORD&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;${&#x6570;&#x636E;&#x5E93;&#x767B;&#x5F55;&#x5BC6;&#x7801;}&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;HOST&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;localhost&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;PORT&apos;</span><span class="token punctuation">:</span> <span class="token number">3306</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># &#x8BBE;&#x7F6E;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x76EE;&#x5F55;</span>
+TEMPLATES <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">&apos;BACKEND&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;django.template.backends.django.DjangoTemplates&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;DIRS&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">&apos;templates&apos;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token punctuation">,</span>
+        <span class="token string">&apos;APP_DIRS&apos;</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;OPTIONS&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">&apos;context_processors&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">&apos;django.template.context_processors.debug&apos;</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;django.template.context_processors.request&apos;</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;django.contrib.auth.context_processors.auth&apos;</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;django.contrib.messages.context_processors.messages&apos;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment"># &#x8BED;&#x8A00;&#x672C;&#x5730;&#x5316;</span>
+LANGUAGE_CODE <span class="token operator">=</span> <span class="token string">&apos;zh-hans&apos;</span>
+TIME_ZONE <span class="token operator">=</span> <span class="token string">&apos;Asia/Shanghai&apos;</span>
+</pre><h3 class="mume-header" id="%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE">&#x8DEF;&#x7531;&#x914D;&#x7F6E;</h3>
+
+<p><code>&lt;project&gt;/urls.py</code></p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-from">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword keyword-import">import</span> admin
+<span class="token keyword keyword-from">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword keyword-import">import</span> path
+
+<span class="token keyword keyword-import">import</span> main<span class="token punctuation">.</span>views
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+    path<span class="token punctuation">(</span><span class="token string">&apos;admin/&apos;</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    path<span class="token punctuation">(</span><span class="token string">&apos;1/&apos;</span><span class="token punctuation">,</span> main<span class="token punctuation">.</span>views<span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    path<span class="token punctuation">(</span><span class="token string">&apos;2/&apos;</span><span class="token punctuation">,</span> main<span class="token punctuation">.</span>views<span class="token punctuation">.</span>second<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    path<span class="token punctuation">(</span><span class="token string">&apos;3/&apos;</span><span class="token punctuation">,</span> main<span class="token punctuation">.</span>views<span class="token punctuation">.</span>third<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+</pre><h2 class="mume-header" id="%E5%8F%AF%E8%A7%86%E5%8C%96%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86">&#x53EF;&#x89C6;&#x5316;&#x540E;&#x53F0;&#x7BA1;&#x7406;</h2>
+
+<h3 class="mume-header" id="%E5%88%9B%E5%BB%BA%E8%B6%85%E7%BA%A7%E7%AE%A1%E7%90%86%E5%91%98">&#x521B;&#x5EFA;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;</h3>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash">python manage.py createsuperuser
+<span class="token comment">#   ...\python.exe manage.py c  reatesuperuser</span>
+<span class="token comment">#   &#x7528;&#x6237;&#x540D;:</span>
+<span class="token comment">#   &#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x5730;&#x5740;:</span>
+<span class="token comment">#   Password:</span>
+<span class="token comment">#   Password (again):</span>
+<span class="token comment">#   Superuser created successfully.</span>
+</pre><p><code>http://127.0.0.1:8000/admin/</code></p>
+<h2 class="mume-header" id="module">Module</h2>
+
+<h3 class="mume-header" id="mysql%E6%94%AF%E6%8C%81">mysql&#x652F;&#x6301;</h3>
+
+<p><code>&lt;app&gt;/__init__.py</code></p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-import">import</span> pymysql
+pymysql<span class="token punctuation">.</span>install_as_MySQLdb<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre><h3 class="mume-header" id="%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B">&#x8BBE;&#x8BA1;&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;</h3>
+
+<p><code>&lt;app&gt;/models.py</code></p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># coding=utf-8</span>
+<span class="token keyword keyword-from">from</span> django<span class="token punctuation">.</span>db <span class="token keyword keyword-import">import</span> models
+
+
+<span class="token comment"># &#x6A21;&#x578B;&#x8BBE;&#x8BA1;&#x4EE3;&#x7801;</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Student</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># id: &#x81EA;&#x52A8;&#x6DFB;&#x52A0;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8BBE;&#x8BA1;</span>
+    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
+    number <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    birthday <span class="token operator">=</span> models<span class="token punctuation">.</span>DateField<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    is_del <span class="token operator">=</span> models<span class="token punctuation">.</span>BooleanField<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;
+        &#x81EA;&#x589E;: models.AutoField()
+        &#x5B57;&#x7B26;&#x4E32;: models.CharField(max_length=?)
+        &#x5927;&#x6587;&#x672C;: models.TextField()
+        &#x6574;&#x5F62;: models.IntegerField()
+        &#x5B8C;&#x5168;&#x6D6E;&#x70B9;&#x6570;: models.DecimalField(max_digits=None, decimal_places=None)
+        &#x8BA1;&#x7B97;&#x6D6E;&#x70B9;&#x6570;: models.FloatField()
+        &#x65E5;&#x671F;: models.DateField(auto_now=False, auto_now_add=False)
+        &#x65F6;&#x95F4;: models.TimeField(auto_now=False, auto_now_add=False)
+        &#x65E5;&#x671F;+&#x65F6;&#x95F4;: models.DateTimeField(auto_now=False, auto_now_add=False)
+        &#x6587;&#x4EF6;: models.FileField()
+        &#x56FE;&#x7247;: models.ImageField()
+    &quot;&quot;&quot;</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;
+        primary_key:    &#x4E3B;&#x952E;
+        unique:         &#x4E0D;&#x53EF;&#x91CD;&#x590D;
+        db_index:       &#x52A0;&#x7D22;&#x5F15;
+        db_column:      &#x81EA;&#x5B9A;&#x4E49;&#x5217;&#x540D;
+        null:           &#x5141;&#x8BB8;&#x4E3A;null
+        blank:          &#x540E;&#x53F0;&#x7BA1;&#x7406;&#x6DFB;&#x52A0;&#x65F6;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4E0D;&#x586B;&#x5199;
+    &quot;&quot;&quot;</span>
+
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Computer</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;
+    &#x5B9A;&#x4E49;&#x5916;&#x952E;
+        CASCADE:    &#x5220;&#x9664;&#x5173;&#x8054;&#x6570;&#x636E;&#xFF0C;&#x4E0E;&#x4E4B;&#x5173;&#x8054;&#x7684;&#x6570;&#x636E;&#x4E5F;&#x5220;&#x9664;
+        DO_NOTHING: &#x5220;&#x9664;&#x5173;&#x8054;&#x6570;&#x636E;&#xFF0C;&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;
+        SET_NULL:   &#x5220;&#x9664;&#x5173;&#x8054;&#x6570;&#x636E;&#xFF0C;&#x4E0E;&#x4E4B;&#x5173;&#x8054;&#x7684;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A;null
+        PROTECT:    &#x5220;&#x9664;&#x5173;&#x8054;&#x6570;&#x636E;&#xFF0C;&#x5F15;&#x53D1;&#x9519;&#x8BEF;ProtectedError
+        SET:        &#x5220;&#x9664;&#x5173;&#x8054;&#x6570;&#x636E;&#xFF0C;&#x4E0E;&#x4E4B;&#x5173;&#x8054;&#x7684;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A;&#x6307;&#x5B9A;&#x7684;&#x503C;
+    &quot;&quot;&quot;</span>
+    holder <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span><span class="token string">&apos;Student&apos;</span><span class="token punctuation">,</span> on_delete<span class="token operator">=</span>models<span class="token punctuation">.</span>SET_NULL<span class="token punctuation">,</span> blank<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> null<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</pre><h3 class="mume-header" id="%E8%BF%81%E7%A7%BB%E6%96%87%E4%BB%B6">&#x8FC1;&#x79FB;&#x6587;&#x4EF6;</h3>
+
+<h4 class="mume-header" id="%E7%94%9F%E6%88%90%E8%BF%81%E7%A7%BB%E6%96%87%E4%BB%B6">&#x751F;&#x6210;&#x8FC1;&#x79FB;&#x6587;&#x4EF6;</h4>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash">python manage.py makemigrations
+<span class="token comment">#   Migrations for &apos;main&apos;:</span>
+<span class="token comment">#   main\migrations\0001_initial.py</span>
+<span class="token comment">#       - Create model Table</span>
+</pre><h4 class="mume-header" id="%E6%89%A7%E8%A1%8C%E8%BF%81%E7%A7%BB%E6%96%87%E4%BB%B6">&#x6267;&#x884C;&#x8FC1;&#x79FB;&#x6587;&#x4EF6;</h4>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash">python manage.py migrate
+<span class="token comment">#   Operations to perform:</span>
+<span class="token comment">#       Apply all migrations: admin, auth, contenttypes, main, sessions</span>
+<span class="token comment">#   Running migrations:</span>
+<span class="token comment">#       Applying ...</span>
+<span class="token comment">#       Applying ...</span>
+<span class="token comment">#       ...</span>
+</pre><h3 class="mume-header" id="%E6%B3%A8%E5%86%8C%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2">&#x6CE8;&#x518C;&#x6A21;&#x578B;&#x5230;&#x540E;&#x53F0;&#x7BA1;&#x7406;&#x754C;&#x9762;</h3>
+
+<p><code>&lt;app&gt;/admin.py</code></p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-from">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword keyword-import">import</span> admin
+
+<span class="token comment"># Register your models here.</span>
+<span class="token keyword keyword-from">from</span> main<span class="token punctuation">.</span>models <span class="token keyword keyword-import">import</span> Student
+<span class="token keyword keyword-from">from</span> main<span class="token punctuation">.</span>models <span class="token keyword keyword-import">import</span> Computer
+
+admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Student<span class="token punctuation">)</span>
+admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Computer<span class="token punctuation">)</span>
+</pre><h2 class="mume-header" id="view">View</h2>
+
+<p><code>&lt;app&gt;/views.py</code></p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># &#x6A21;&#x677F;&#x4F7F;&#x7528;</span>
+<span class="token keyword keyword-from">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword keyword-import">import</span> render
+
+<span class="token comment"># &#x57FA;&#x7840;&#x54CD;&#x5E94;&#x3001;&#x8BF7;&#x6C42;</span>
+<span class="token keyword keyword-from">from</span> django<span class="token punctuation">.</span>http <span class="token keyword keyword-import">import</span> HttpRequest<span class="token punctuation">,</span> HttpResponse
+<span class="token keyword keyword-from">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>handlers<span class="token punctuation">.</span>wsgi <span class="token keyword keyword-import">import</span> WSGIRequest
+<span class="token keyword keyword-from">from</span> django<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>sessions<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>db <span class="token keyword keyword-import">import</span> SessionStore
+<span class="token keyword keyword-import">import</span> json
+
+
+<span class="token keyword keyword-def">def</span> <span class="token function">get_current_time_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-import">import</span> time
+    <span class="token keyword keyword-return">return</span> time<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="token punctuation">,</span> time<span class="token punctuation">.</span>localtime<span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># Create your views here.</span>
+<span class="token keyword keyword-def">def</span> <span class="token function">first</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;
+    &#x8BF7;&#x6C42;&#x4E0E;&#x54CD;&#x5E94;
+    &quot;&quot;&quot;</span>
+    <span class="token keyword keyword-def">def</span> <span class="token function">get_request_message</span><span class="token punctuation">(</span>_request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        _message <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">&apos;http&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">&apos;HTTPS&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>is_secure<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;AJAX&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>is_ajax<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;METHOD&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>method<span class="token punctuation">,</span>
+                <span class="token string">&apos;URI&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>get_raw_uri<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;HOST&apos;</span><span class="token punctuation">:</span>  _request<span class="token punctuation">.</span>get_host<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;PORT&apos;</span><span class="token punctuation">:</span>  _request<span class="token punctuation">.</span>get_port<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;PATH&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>path<span class="token punctuation">,</span>
+                <span class="token string">&apos;ENCODING&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>encoding<span class="token punctuation">,</span>
+                <span class="token string">&apos;CONTENT_LENGTH&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>META<span class="token punctuation">[</span><span class="token string">&apos;CONTENT_LENGTH&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;CONTENT_TYPE&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>META<span class="token punctuation">[</span><span class="token string">&apos;CONTENT_TYPE&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">&apos;REMOTE_ADDR&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>META<span class="token punctuation">[</span><span class="token string">&apos;REMOTE_ADDR&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">&apos;headers&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>_store<span class="token punctuation">,</span>     <span class="token comment"># _store is dict()</span>
+            <span class="token string">&apos;cookies&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>COOKIES<span class="token punctuation">,</span>            <span class="token comment"># COOKIES is dict()</span>
+            <span class="token comment"># from django.contrib.sessions.backends.db import SessionStore</span>
+            <span class="token string">&apos;session&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>session<span class="token punctuation">.</span>_session<span class="token punctuation">,</span>
+            <span class="token comment">#  _request.GET, _request.POST is dict()</span>
+            <span class="token string">&apos;parameter&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>GET <span class="token keyword keyword-if">if</span> <span class="token string">&apos;GET&apos;</span> <span class="token operator">==</span> _request<span class="token punctuation">.</span>method <span class="token keyword keyword-else">else</span> _request<span class="token punctuation">.</span>POST<span class="token punctuation">,</span>
+            <span class="token string">&apos;files&apos;</span><span class="token punctuation">:</span> _request<span class="token punctuation">.</span>FILES<span class="token punctuation">,</span>                <span class="token comment"># FILES is dict()</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword keyword-return">return</span> _message
+    <span class="token comment"># end def</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    request_message <span class="token operator">=</span> get_request_message<span class="token punctuation">(</span>request<span class="token punctuation">)</span>
+
+    <span class="token comment"># Session</span>
+    <span class="token comment"># request.session.clear()</span>
+    login_time <span class="token operator">=</span> request<span class="token punctuation">.</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">&apos;first_login_time&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;first&apos;</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-if">if</span> login_time <span class="token operator">==</span> <span class="token string">&apos;first&apos;</span><span class="token punctuation">:</span>
+        request<span class="token punctuation">.</span>session<span class="token punctuation">[</span><span class="token string">&apos;first_login_time&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> get_current_time_string<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    request_message<span class="token punctuation">[</span><span class="token string">&apos;first_login_time&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> login_time
+
+    <span class="token comment"># Response</span>
+    response <span class="token operator">=</span> HttpResponse<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    response<span class="token punctuation">.</span>charset <span class="token operator">=</span> <span class="token string">&apos;utf-8&apos;</span>
+    response<span class="token punctuation">.</span>status_code <span class="token operator">=</span> <span class="token number">200</span>
+    response<span class="token punctuation">[</span><span class="token string">&apos;Content-Type&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&apos;text/json&apos;</span>
+
+    <span class="token comment"># Cookie</span>
+    <span class="token comment"># &#x6CE8;&#x610F;set_cookie&#x7684;&#x5176;&#x5B83;&#x53C2;&#x6570;</span>
+    response<span class="token punctuation">.</span>set_cookie<span class="token punctuation">(</span><span class="token string">&apos;last&apos;</span><span class="token punctuation">,</span> get_current_time_string<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    response<span class="token punctuation">.</span>write<span class="token punctuation">(</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>request_message<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-return">return</span> response
+
+
+<span class="token keyword keyword-def">def</span> <span class="token function">second</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;
+    &#x6A21;&#x677F;&#x4F7F;&#x7528;
+    &quot;&quot;&quot;</span>
+    <span class="token keyword keyword-return">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">&apos;../templates/main/index.html&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        <span class="token string">&apos;title&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;&#x6807;&#x9898;&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;headline&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;&#x6A21;&#x677F;&#x4F7F;&#x7528;Demo&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;range1&apos;</span><span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;dict1&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;Apple&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;Banana&apos;</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">&apos;200&apos;</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword keyword-def">def</span> <span class="token function">third</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-import">import</span> random
+    <span class="token keyword keyword-from">from</span> main<span class="token punctuation">.</span>models <span class="token keyword keyword-import">import</span> Student
+
+    <span class="token comment"># &#x6DFB;&#x52A0;&#x6570;&#x636E;</span>
+    stu <span class="token operator">=</span> Student<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    stu<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;&#x540D;&#x5B57;&quot;</span>
+    stu<span class="token punctuation">.</span>number <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">9999</span><span class="token punctuation">)</span>
+    stu<span class="token punctuation">.</span>birthday <span class="token operator">=</span> <span class="token string">&apos;1998-8-23&apos;</span>
+    stu<span class="token punctuation">.</span>is_del <span class="token operator">=</span> <span class="token boolean">False</span>
+    stu<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># &#x67E5;&#x8BE2;&#x6570;&#x636E;</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    stu <span class="token operator">=</span> Student<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token builtin">id</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>stu<span class="token punctuation">)</span>
+    <span class="token comment"># stu = Student.objects.filter(id=1)</span>
+    <span class="token comment"># print(stu)</span>
+    <span class="token comment"># stu = Student.objects.exclude(id=1)</span>
+    <span class="token comment"># print(stu)</span>
+    <span class="token comment"># print(Student.computer_set.all())</span>
+
+    <span class="token comment"># &#x4FEE;&#x6539;&#x6570;&#x636E;</span>
+    stu<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;&#x4FEE;&#x6539;&quot;</span>
+    stu<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># &#x5220;&#x9664;&#x6570;&#x636E;</span>
+    <span class="token comment"># stu.delete()</span>
+    <span class="token keyword keyword-return">return</span> HttpResponse<span class="token punctuation">(</span><span class="token string">&quot;Success!&quot;</span><span class="token punctuation">)</span>
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
