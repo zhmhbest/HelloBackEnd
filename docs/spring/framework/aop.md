@@ -20,65 +20,68 @@
 
 ### Proxy
 
-`UserInterface.java`
+`Speaker.java`
 
 ```java
-public interface UserInterface {
-    void hi();
-    void sayHello(String name);
-    void sayGoodbye(String name);
+public interface Speaker {
+    void sayHello();
+    void makeSpeech(String s);
+    void sayBye();
 }
 ```
 
 `User.java`
 
 ```java
-public class User implements UserInterface {
-    public void hi() { System.out.print("Hi!\n"); }
-    public void sayHello(String name) { System.out.printf("%s: Hello\n", name); }
-    public void sayGoodbye(String name) { System.out.printf("%s: Goodbye\n", name); }
+public class User implements Speaker {
+    protected String name;
+    public User(String name) { this.name = name; }
+    @Override
+    public void sayHello() { System.out.printf("%s: Hello\n", this.name); }
+    @Override
+    public void makeSpeech(String s) { System.out.printf("%s: %s\n", this.name, s); }
+    @Override
+    public void sayBye() { System.out.printf("%s: Bye\n", this.name); }
 }
 ```
 
 #### JDK
 
-`ProxyJDK.java`
+`Main.java`
 
 ```java
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public class ProxyJDK {
+public class Main {
+    static <T> T proxyJDK(Object obj, Class<T> cls) {
+        final ClassLoader L = Main.class.getClassLoader();
+        final Object R = Proxy.newProxyInstance(L, new Class[]{cls}, new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws InvocationTargetException, IllegalAccessException {
+                final String name = method.getName();
+                System.out.printf("↓↓↓↓ Before %12s ↓↓↓↓\n", name);
+                Object ret = method.invoke(obj, args); // 实际调用
+                System.out.printf("↑↑↑↑ After  %12s ↑↑↑↑\n\n", name);
+                return ret;
+            }
+        });
+        return (T) R;
+    }
     public static void main(String[] args) {
-        // 增强User
-        User obj = new User();
-
-        UserInterface user = (UserInterface) Proxy.newProxyInstance(
-                ProxyJDK.class.getClassLoader(),
-                new Class[]{UserInterface.class},
-                new InvocationHandler() {
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        String name = method.getName();
-                        Object ret = null;
-                        System.out.printf("====Before : %s\n", name);
-                        ret = method.invoke(obj, args);
-                        System.out.printf("====After  : %s\n", name);
-                        return ret;
-                    }
-                }
-        );
-
-        user.sayHello("Java");
-        user.sayGoodbye("Python");
+        Speaker speaker = proxyJDK(new User("Peter"), Speaker.class);
+        speaker.sayHello();
+        speaker.makeSpeech("发言内容");
+        speaker.sayBye();
     }
 }
 ```
 
 #### CGLIB
 
-`ProxyCGLIB.java`
+`Main.java`
 
 ```java
 import net.sf.cglib.proxy.Enhancer;
@@ -86,28 +89,24 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
-public class ProxyCGLIB {
-    static class UserInterceptor implements MethodInterceptor {
-        @Override
-        public Object intercept(
-                Object obj, Method method, Object[] params, MethodProxy proxy
-        ) throws Throwable {
-            String name = method.getName();
-            System.out.printf("====Before : %s\n", name);
-            Object result = proxy.invokeSuper(obj, params);
-            System.out.printf("====After  : %s\n", name);
-            return result;
-        }
-    }
-
+public class Main {
     public static void main(String[] args) {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(User.class);
-        enhancer.setCallback(new UserInterceptor());
-        User user = (User) enhancer.create();
-        System.out.println(user);
-        user.sayHello("Java");
-        user.sayGoodbye("Python");
+        enhancer.setCallback(new MethodInterceptor() {
+            @Override
+            public Object intercept(Object obj, Method method, Object[] params, MethodProxy proxy) throws Throwable {
+                final String name = method.getName();
+                System.out.printf("↓↓↓↓ Before %12s ↓↓↓↓\n", name);
+                Object ret = proxy.invokeSuper(obj, params);
+                System.out.printf("↑↑↑↑ After  %12s ↑↑↑↑\n\n", name);
+                return ret;
+            }
+        });
+        User user = (User) enhancer.create(new Class[]{String.class}, new Object[]{"Ann"});
+        user.sayHello();
+        user.makeSpeech("发言内容");
+        user.sayBye();
     }
 }
 ```
