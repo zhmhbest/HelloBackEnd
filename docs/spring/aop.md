@@ -20,6 +20,20 @@
 
 ### Proxy
 
+`pom.xml`
+
+```xml
+<!-- ↓↓↓↓↓↓ 添加依赖 ↓↓↓↓↓↓ -->
+<dependencies>
+    <dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib</artifactId>
+        <version>2.2</version>
+    </dependency>
+</dependencies>
+<!-- ↑↑↑↑↑↑ 添加依赖 ↑↑↑↑↑↑ -->
+```
+
 `Speaker.java`
 
 ```java

@@ -1,4 +1,18 @@
 
+`pom.xml`
+
+```xml
+<!-- ↓↓↓↓↓↓ 添加依赖 ↓↓↓↓↓↓ -->
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>5.2.6.RELEASE</version>
+    </dependency>
+</dependencies>
+<!-- ↑↑↑↑↑↑ 添加依赖 ↑↑↑↑↑↑ -->
+```
+
 `ObjectHolder.java`
 
 ```java
@@ -26,7 +40,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        final String xmlPath = "?.xml";
+        final String xmlPath = "Main.xml";
         ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
         for (String beanName: context.getBeanDefinitionNames()) {
             Object obj = context.getBean(beanName);
@@ -333,7 +347,7 @@ public class LifeCycle implements BeanPostProcessor {
 - `@Resource(name="?")`表示根据名称进行注入。
 - `@Value`表示注入值到字段。
 
-`annotation/User.java`
+`annotation.User.java`
 
 ```java
 package annotation;
