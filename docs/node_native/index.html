@@ -263,39 +263,56 @@ pre[data-line] .line-highlight[data-end]:after {
       <div class="mume markdown-preview  ">
       <link rel="stylesheet" href="https://zhmhbest.gitee.io/hellomathematics/style/index.css">
 <script src="https://zhmhbest.gitee.io/hellomathematics/style/index.js"></script>
-<h1 class="mume-header" id="hellobackendhttpsgithubcomzhmhbesthellobackend"><a href="https://github.com/zhmhbest/HelloBackEnd">HelloBackEnd</a></h1>
+<h1 class="mume-header" id="node-nativeindexhtml"><a href="../index.html">Node Native</a></h1>
 
-<h2 class="mume-header" id="python">Python</h2>
+<h2 class="mume-header" id="%E7%8E%AF%E5%A2%83">&#x73AF;&#x5883;</h2>
 
-<h3 class="mume-header" id="flaskflaskindexhtml"><a href="./flask/index.html">Flask</a></h3>
+<p><code>index.js</code></p>
+<pre data-role="codeBlock" data-info="js code_block=true class=&quot;line-numbers&quot;" class="language-javascript line-numbers"><span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span> createServer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;http&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> serverHost <span class="token operator">=</span> <span class="token string">&apos;0.0.0.0&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> serverPort <span class="token operator">=</span> <span class="token number">9999</span><span class="token punctuation">;</span>
+<span class="token function">createServer</span><span class="token punctuation">(</span>
+    <span class="token doc-comment comment">/**
+     * <span class="token keyword keyword-@callback">@callback</span>
+     * <span class="token keyword keyword-@param">@param</span> <span class="token class-name"><span class="token punctuation">{</span>IncomingMessage<span class="token punctuation">}</span></span> <span class="token parameter">req</span>
+     * <span class="token keyword keyword-@param">@param</span> <span class="token class-name"><span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span></span> <span class="token parameter">res</span>
+     */</span>
+    <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Request</span>
+    <span class="token keyword keyword-const">const</span> requestHttpVersion <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token property-access">httpVersion</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-const">const</span> requestMethod <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token property-access">method</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-const">const</span> requestPath <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token property-access">url</span><span class="token punctuation">;</span>
+    <span class="token doc-comment comment">/** <span class="token keyword keyword-@type">@type</span> <span class="token class-name"><span class="token punctuation">{</span>IncomingHttpHeaders<span class="token punctuation">}</span></span> */</span>
+    <span class="token keyword keyword-const">const</span> requestHeaders <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token property-access">headers</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-const">const</span> contentLength <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>requestHeaders<span class="token punctuation">[</span><span class="token string">&apos;content-length&apos;</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token string">&apos;0&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-const">const</span> contentChunks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    req<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">&apos;data&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">chunk</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> contentChunks<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>chunk<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Response</span>
+    <span class="token keyword keyword-const">const</span> <span class="token function-variable function">responseEvent</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-const">const</span> contentBody <span class="token operator">=</span> contentChunks<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">?</span> contentChunks<span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span><span class="token string">&apos;&apos;</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword null nil keyword-null">null</span><span class="token punctuation">;</span>
+        res<span class="token punctuation">.</span><span class="token method function property-access">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">&apos;Content-Type&apos;</span><span class="token operator">:</span> <span class="token string">&apos;application/json&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        res<span class="token punctuation">.</span><span class="token method function property-access">write</span><span class="token punctuation">(</span><span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            line<span class="token operator">:</span> <span class="token punctuation">{</span>
+                version<span class="token operator">:</span> requestHttpVersion<span class="token punctuation">,</span>
+                method<span class="token operator">:</span> requestMethod<span class="token punctuation">,</span>
+                path<span class="token operator">:</span> requestPath
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            headers<span class="token operator">:</span> requestHeaders<span class="token punctuation">,</span>
+            body<span class="token operator">:</span> contentBody
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        res<span class="token punctuation">.</span><span class="token method function property-access">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">// MakeResponse</span>
+    <span class="token keyword control-flow keyword-if">if</span> <span class="token punctuation">(</span>contentLength <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        req<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">&apos;end&apos;</span><span class="token punctuation">,</span> responseEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow keyword-else">else</span> <span class="token punctuation">{</span>
+        <span class="token function">responseEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<h3 class="mume-header" id="djangodjangoindexhtml"><a href="./django/index.html">Django</a></h3>
-
-<h2 class="mume-header" id="nodejs">Nodejs</h2>
-
-<h3 class="mume-header" id="node-nativenode_nativeindexhtml"><a href="./node_native/index.html">Node Native</a></h3>
-
-<h3 class="mume-header" id="expressexpressindexhtml"><a href="./express/index.html">Express</a></h3>
-
-<h2 class="mume-header" id="java">Java</h2>
-
-<h3 class="mume-header" id="springspringindexhtml"><a href="./spring/index.html">Spring</a></h3>
-
-<h2 class="mume-header" id="go">Go</h2>
-
-<h3 class="mume-header" id="fiberfiberindexhtml"><a href="./fiber/index.html">Fiber</a></h3>
-
-<h2 class="mume-header" id="rust">Rust</h2>
-
-<h3 class="mume-header" id="axumaxumindexhtml"><a href="./axum/index.html">Axum</a></h3>
-
-<h2 class="mume-header" id="test">Test</h2>
-
-<h3 class="mume-header" id="postmanhttpswwwpostmancomdownloads"><a href="https://www.postman.com/downloads/">Postman</a></h3>
-
-<h3 class="mume-header" id="jmeterhttpsjmeterapacheorgdownload_jmetercgi"><a href="https://jmeter.apache.org/download_jmeter.cgi">Jmeter</a></h3>
-
-
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span>serverPort<span class="token punctuation">,</span> serverHost<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Web Server started at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>serverHost<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>serverPort<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
       </div>
       
       
