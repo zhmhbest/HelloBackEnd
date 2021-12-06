@@ -22,7 +22,3 @@
 ## AOP
 
 @import "aop.md"
-
-## Web
-
-@import "web.md"
