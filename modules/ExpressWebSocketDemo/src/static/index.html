@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Express & Socket.io</title>
+    <script src="socket.io.js"></script>
+</head>
+
+<body>
+    <script>
+        const client = io();
+        client.on("message", msg => {
+            appendMessage(msg)
+        });
+        client.on("broadcast", msg => {
+            appendMessage(msg)
+        })
+    </script>
+
+    <pre id="chatMessages" style="background-color: bisque; height: 400px; overflow-y: auto;"></pre>
+    <input id="chatText" type="text"/>
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const domChatMessages = document.querySelector("#chatMessages")
+        const domChatText = document.querySelector("#chatText")
+        function appendMessage(text) {
+            domChatMessages.append(`${text}\n`)
+        }
+        function sendMessage() {
+            const text = domChatText.value
+            client.emit("message", text)
+            domChatText.value = ""
+        }
+    </script>
+</body>
+
+</html>
