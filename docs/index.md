@@ -25,6 +25,8 @@
 
 ### [Fiber](./fiber/index.html)
 
+### [Gin](https://github.com/gin-gonic/gin)
+
 ## Rust
 
 ### [Axum](./axum/index.html)
